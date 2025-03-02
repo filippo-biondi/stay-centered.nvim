@@ -39,6 +39,9 @@ local function stay_centered(ctx)
 
 	if line ~= vim.b.last_line then
 		local column = vim.fn.getcurpos()[3]
+    if vim.api.nvim_get_mode()["mode"] == "s" then
+      return
+    end
 		vim.cmd("norm! zz")
 		vim.b.last_line = line
 		if ctx.mode == mode.insert then
